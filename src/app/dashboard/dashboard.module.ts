@@ -17,7 +17,6 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatIconModule,
     MatToolbarModule,
     DashboardRoutingModule,
-    
     CommonModule
   ]
 })
