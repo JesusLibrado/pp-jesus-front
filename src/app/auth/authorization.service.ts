@@ -1,14 +1,26 @@
 import { Injectable } from '@angular/core';
-
+import { HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {environment} from '../../environments/environment';
+import { Observable, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorizationService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  setCredentials(name) {
-    window.sessionStorage.setItem('name', name);
+  private errorHandler(error: HttpErrorResponse){
+    return throwError("Verifica que los datos sean correctos");
+  }
+
+  authorize({code, name}): Observable<any> {
+    return this.http.post(`${environment.apiUrl}/auth`, {
+      code: code, name: name
+    }).pipe(map(res=>{
+        this.setCredentials(res['token'], res['name']);
+        return true;
+    }), catchError(this.errorHandler));
   }
 
   getCredentials(){
@@ -24,12 +36,13 @@ export class AuthorizationService {
     window.sessionStorage.removeItem('name');
   }
 
-  setToken(newToken){
-    window.sessionStorage.setItem('token', newToken);
-  }
-
   getToken(){
     return window.sessionStorage.getItem('token');
+  }
+
+  private setCredentials(token, name){
+    window.sessionStorage.setItem('token', token);
+    window.sessionStorage.setItem('name', name);
   }
 
 }
