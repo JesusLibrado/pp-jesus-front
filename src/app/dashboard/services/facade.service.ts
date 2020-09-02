@@ -17,6 +17,12 @@ export class FacadeService {
   } 
 
 
+  add(body) {
+    console.log(body);
+    //return this.http.post();
+  }
+
+
   delete(_id: string): Observable<any>{
     let params = new HttpParams().append('id', _id);
     return this.http.delete(`${environment.apiUrl}/api`, {params: params});

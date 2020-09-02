@@ -19,7 +19,6 @@ export class DashboardComponent implements OnInit {
   }
 
   deleteUser(_id: string){
-    this.snackbar.open(_id)
     this.facade.delete(_id)
     .subscribe(
       res=>this.snackbar.open(res['msg']),
