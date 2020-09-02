@@ -13,6 +13,6 @@ export class FacadeService {
   constructor(private http: HttpClient) { }
 
   fetch(queryParams?): Observable<User[]> {
-    return this.http.get<User[]>(`${environment.apiUrl}/api/search`);
+    return this.http.get<User[]>(`${environment.apiUrl}/api/search`, {params: queryParams});
   } 
 }
