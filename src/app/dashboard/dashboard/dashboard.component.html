@@ -14,19 +14,7 @@
   </h2>
   <app-add></app-add>
   <br>  
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-          Aplicar filtros
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-
-    <mat-form-field>
-      <mat-label>Nombre</mat-label>
-      <input matInput>
-    </mat-form-field>
-
-  </mat-expansion-panel>
+  <app-filters (filter)="filter($event)"></app-filters>
   <app-table 
     [data]="(facade.users$ | async)"
     (onDelete)="deleteUser($event)"

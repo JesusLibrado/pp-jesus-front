@@ -18,6 +18,10 @@ export class DashboardComponent implements OnInit {
     this.facade.fetch();
   }
 
+  filter(params){
+    this.facade.fetch(params);
+  }
+
   deleteUser(_id: string){
     this.facade.delete(_id);
   }

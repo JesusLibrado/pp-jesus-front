@@ -1,0 +1,39 @@
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+          Aplicar filtros
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-divider></mat-divider>
+
+    <p>
+        <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input [(ngModel)]="name" matInput>
+        </mat-form-field>
+    </p>
+
+    <h4>Género</h4>
+    <mat-radio-group aria-label="Genero" [(ngModel)]="genre">
+        <mat-radio-button value="MALE">Masculino</mat-radio-button>
+        <mat-radio-button value="FEMALE">Femenino</mat-radio-button>
+        <mat-radio-button value="NON-BINARY">No binario</mat-radio-button>
+    </mat-radio-group>
+    <h4>Edad</h4>
+    <mat-slider
+        class="example-margin"
+        [disabled]="disabled"
+        [invert]="invert"
+        [max]="max"
+        [min]="min"
+        [step]="step"
+        [thumbLabel]="thumbLabel"
+        [tickInterval]="getSliderTickInterval()"
+        [(ngModel)]="age"
+        [vertical]="vertical">
+    </mat-slider>
+    <p>
+        <button mat-raised-button color="warn" (click)="filter.emit({})">Reset</button>
+        <button mat-raised-button color="primary" (click)="submit()">Buscar</button>
+    </p>
+</mat-expansion-panel>

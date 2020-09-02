@@ -15,13 +15,21 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { AddComponent } from './add/add.component';
 import { FormComponent } from './add/form/form.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatRadioModule} from '@angular/material/radio';
+import { FiltersComponent } from './filters/filters.component';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatDividerModule} from '@angular/material/divider';
+
 
 @NgModule({
-  declarations: [DashboardComponent, TableComponent, AddComponent, FormComponent],
+  declarations: [DashboardComponent, TableComponent, AddComponent, FormComponent, FiltersComponent],
   imports: [
+    MatDividerModule,
+    MatGridListModule,
+    MatSliderModule,
     MatRadioModule,
     MatDialogModule,
     MatSnackBarModule,
@@ -34,6 +42,7 @@ import {MatRadioModule} from '@angular/material/radio';
     MatIconModule,
     MatToolbarModule,
     ReactiveFormsModule,
+    FormsModule,
     DashboardRoutingModule,
     CommonModule
   ],
