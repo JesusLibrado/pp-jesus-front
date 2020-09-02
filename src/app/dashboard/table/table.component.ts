@@ -1,6 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { FacadeService } from '../services/facade.service';
 import { User } from '../user';
 
 @Component({
@@ -18,7 +17,7 @@ import { User } from '../user';
 export class TableComponent implements OnInit {
 
   @Input() data: User[] = [];
-
+  @Output() onDelete: EventEmitter<any> = new EventEmitter<any>(null);
   columnsToDisplay = ['Nombre', 'Email', 'Edad', 'Género', 'Opciones'];
   expandedElement: User;
 
@@ -27,8 +26,10 @@ export class TableComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  delete(id){
-    console.log(id);
+  delete(id, name: string){
+    if(window.confirm(`¿Desea eliminar a ${name.toUpperCase()}?`)){
+      this.onDelete.emit(id);
+    }
   }
 
 }

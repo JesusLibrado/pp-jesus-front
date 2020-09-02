@@ -28,5 +28,8 @@
     </mat-form-field>
 
   </mat-expansion-panel>
-  <app-table [data]="users" class="table"></app-table>
+  <app-table 
+    [data]="users"
+    (onDelete)="deleteUser($event)"
+    class="table"></app-table>
 </div>

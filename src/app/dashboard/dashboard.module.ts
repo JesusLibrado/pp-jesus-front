@@ -12,10 +12,12 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [DashboardComponent, TableComponent],
   imports: [
+    MatSnackBarModule,
     MatInputModule,
     MatFormFieldModule,
     MatExpansionModule,
@@ -26,6 +28,9 @@ import {MatInputModule} from '@angular/material/input';
     MatToolbarModule,
     DashboardRoutingModule,
     CommonModule
+  ],
+  providers: [
+    
   ]
 })
 export class DashboardModule { }
