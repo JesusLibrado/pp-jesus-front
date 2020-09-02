@@ -13,10 +13,17 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { AddComponent } from './add/add.component';
+import { FormComponent } from './add/form/form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
-  declarations: [DashboardComponent, TableComponent],
+  declarations: [DashboardComponent, TableComponent, AddComponent, FormComponent],
   imports: [
+    MatRadioModule,
+    MatDialogModule,
     MatSnackBarModule,
     MatInputModule,
     MatFormFieldModule,
@@ -26,6 +33,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatTableModule, 
     MatIconModule,
     MatToolbarModule,
+    ReactiveFormsModule,
     DashboardRoutingModule,
     CommonModule
   ],

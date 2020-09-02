@@ -1,0 +1,61 @@
+<h2 mat-dialog-title>Agregar usuario nuevo</h2>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="form">
+        <p>
+            <mat-form-field appearance="legacy">
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="name" placeholder="Nombre completo">
+                <mat-icon matSuffix>person</mat-icon>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="legacy">
+                <mat-label>Correo electrónico</mat-label>
+                <input matInput formControlName="email" placeholder="email@dominio.com">
+                <mat-icon matSuffix>mail</mat-icon>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="legacy">
+                <mat-label>Teléfono</mat-label>
+                <input matInput formControlName="phone" placeholder="01234567890">
+                <mat-icon matSuffix>phone</mat-icon>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="legacy">
+                <mat-label>Edad</mat-label>
+                <input matInput formControlName="age" placeholder="23">
+                <mat-icon matSuffix>date_range</mat-icon>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-radio-group aria-label="Genero" formControlName="genre">
+                <mat-radio-button value="MALE">Masculino</mat-radio-button>
+                <mat-radio-button value="FEMALE">Femenino</mat-radio-button>
+                <mat-radio-button value="NON-BINARY">No binario</mat-radio-button>
+            </mat-radio-group>
+        </p>
+        <p>
+            <mat-form-field appearance="legacy">
+                <mat-label>Pasatiempos</mat-label>
+                <textarea matInput formControlName="hobby"></textarea>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="legacy">
+                <mat-label>Contraseña</mat-label>
+                <input matInput formControlName="password" type="password" placeholder="********">
+                <mat-icon matSuffix>visibility_off</mat-icon>
+                <mat-hint>Debe contener 8 dígitos</mat-hint>
+            </mat-form-field>
+        </p>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button 
+    [disabled]="form.invalid" color="primary"
+    [mat-dialog-close]="form.value"
+    >Guardar</button>
+</mat-dialog-actions>

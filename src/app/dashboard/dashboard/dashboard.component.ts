@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FacadeService } from '../services/facade.service';
 import { User } from '../user';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,21 +9,16 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(public facade: FacadeService, private snackbar: MatSnackBar) { }
+  constructor(public facade: FacadeService) { }
 
   users: User[] = [];
 
   ngOnInit(): void {
-    this.facade.fetch().subscribe(data=>this.users=data);
+    this.facade.fetch();
   }
 
   deleteUser(_id: string){
-    this.snackbar.open(_id)
-    this.facade.delete(_id)
-    .subscribe(
-      res=>this.snackbar.open(res['msg']),
-      err=>this.snackbar.open("No se ha podido eliminar")
-    );
+    this.facade.delete(_id);
   }
 
 }
