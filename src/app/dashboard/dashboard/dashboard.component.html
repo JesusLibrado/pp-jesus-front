@@ -1,4 +1,4 @@
-<mat-toolbar>
+<mat-toolbar color="primary" class="custom">
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button>
@@ -11,4 +11,22 @@
       <mat-icon>share</mat-icon>
     </button>
 </mat-toolbar>
-<router-outlet></router-outlet>
+<div class="content">
+  <h2>
+    Lista de usuarios
+  </h2>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+          Aplicar filtros
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput>
+    </mat-form-field>
+
+  </mat-expansion-panel>
+  <app-table [data]="users" class="table"></app-table>
+</div>

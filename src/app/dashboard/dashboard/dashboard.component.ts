@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FacadeService } from '../services/facade.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(public facade: FacadeService) { }
+
+  users: User[] = [];
 
   ngOnInit(): void {
+    this.facade.fetch().subscribe(data=>this.users=data);
   }
 
 }

@@ -1,0 +1,31 @@
+<mat-card class="wrapper">
+    <mat-card-title>
+        Autenticación
+    </mat-card-title>
+    <mat-card-subtitle>
+        Introduce un código de seis dígitos, tres pares y tres impares
+    </mat-card-subtitle>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <mat-card-content>
+            <mat-form-field appearance="outline">
+                <mat-label>Código</mat-label>
+                <input matInput formControlName="code" placeholder="Ej. 233214">
+                <mat-icon matSuffix></mat-icon>
+                <!-- <mat-error *ngIf="code.invalid"></mat-error> -->
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="name" placeholder="Ej. Pedro">
+                <mat-icon matSuffix>person</mat-icon>
+                <!-- <mat-hint>Hint</mat-hint> -->
+            </mat-form-field>
+            <br>
+            <p>
+                <mat-error *ngIf="showError">
+                    {{errorMessage}}
+                </mat-error>
+            </p>
+            <button mat-raised-button color="primary" type="submit">Validar</button>
+        </mat-card-content>
+    </form>
+</mat-card>
