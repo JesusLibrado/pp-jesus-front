@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { User } from '../user';
 
@@ -14,7 +14,7 @@ import { User } from '../user';
     ]),
   ],
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, OnChanges {
 
   @Input() data: User[] = [];
   @Output() onDelete: EventEmitter<any> = new EventEmitter<any>(null);
@@ -24,6 +24,13 @@ export class TableComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.data);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes['data']){
+      this.data = changes['data'].currentValue;
+    }
   }
 
   delete(id, name: string){

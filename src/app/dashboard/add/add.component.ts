@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { FormComponent } from './form/form.component';
-import { FormBuilder, Validators } from '@angular/forms';
-import { Builder } from 'protractor';
+import { FacadeService } from '../services/facade.service';
+import { Subscription } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -12,7 +13,13 @@ import { Builder } from 'protractor';
 })
 export class AddComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog, 
+    private facade: FacadeService,
+    private snackbar: MatSnackBar
+  ) { }
+
+  private sub: Subscription;
   
 
   ngOnInit(): void {
@@ -24,8 +31,8 @@ export class AddComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result`, result);
-    });
+      this.facade.add(result).subscribe(res=>this.snackbar.open('Registro exitoso', 'Cerrar'), err=>console.error(err));
+    }, err=>console.error(err));
   }
 
 }

@@ -17,14 +17,12 @@ export class FacadeService {
   } 
 
 
-  add(body) {
-    console.log(body);
-    //return this.http.post();
+  add(body): Observable<any> {
+    return this.http.post(`${environment.apiUrl}/api/new`, {...body});
   }
 
 
   delete(_id: string): Observable<any>{
-    let params = new HttpParams().append('id', _id);
-    return this.http.delete(`${environment.apiUrl}/api`, {params: params});
+    return this.http.delete(`${environment.apiUrl}/api/${_id}`);
   }
 }

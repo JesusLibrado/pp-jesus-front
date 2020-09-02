@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
     this.facade.delete(_id)
     .subscribe(
       res=>this.snackbar.open(res['msg']),
-      err=>this.snackbar.open("No se ha podido eliminar")
+      err=>this.snackbar.open("No se ha podido eliminar", "Cerrar")
     );
   }
 
