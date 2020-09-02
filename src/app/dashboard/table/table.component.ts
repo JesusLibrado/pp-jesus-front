@@ -24,7 +24,6 @@ export class TableComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.data);
   }
 
   ngOnChanges(changes: SimpleChanges) {
