@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {environment} from '../../environments/environment';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorizationService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   private errorHandler(error: HttpErrorResponse){
     return throwError("Verifica que los datos sean correctos");
@@ -23,8 +24,8 @@ export class AuthorizationService {
     }), catchError(this.errorHandler));
   }
 
-  getCredentials(){
-    return window.sessionStorage.getItem('name');
+  get credentials(): Observable<string>{
+    return of(window.sessionStorage.getItem('name'));
   }
 
   isLogged() {
@@ -34,6 +35,7 @@ export class AuthorizationService {
   logout(){
     window.sessionStorage.removeItem('token');
     window.sessionStorage.removeItem('name');
+    this.router.navigateByUrl('/sign-in');
   }
 
   getToken(){

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FacadeService } from '../services/facade.service';
 import { User } from '../user';
+import { AuthorizationService } from 'src/app/auth/authorization.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +10,7 @@ import { User } from '../user';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(public facade: FacadeService) { }
+  constructor(public facade: FacadeService, public auth: AuthorizationService) { }
 
   users: User[] = [];
 

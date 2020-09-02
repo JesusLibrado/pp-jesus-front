@@ -21,7 +21,7 @@ export class AddComponent implements OnInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(FormComponent, {
-      maxWidth: '400px'
+      width: '450px'
     });
 
     dialogRef.afterClosed().subscribe(result =>this.facade.add(result));
